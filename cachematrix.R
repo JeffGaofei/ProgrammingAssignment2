@@ -9,6 +9,7 @@ makeCacheMatrix <- function(x=matrix()){
   list(get=get,setInv=setInv,getInv=getInv)
 }
 
+##Solve the inverse and cache it
 cacheSolve <- function(x, ...) {
   i <- x$getInv() ##read the cached data
   if(!is.null(i)){ ##check whether there's data cached or not
@@ -18,6 +19,6 @@ cacheSolve <- function(x, ...) {
   ##If there's no data cached
   data <- x$get() ## get matrix x to be inversed
   i <- solve(data) ##solve the inverse and assign it to internal variable i
-  x$setInv(i) ##assign internal i to global i and store the data
+  x$setInv(i) ##assign internal i to global i and cache the data
   i ##return global i
 }
